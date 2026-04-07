@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+@font-face{
+  font-family: "inter-b";
+  src: url("../assets//Inter_28pt-Bold.ttf") 
+}
+
+@font-face{
+  font-family: "inter-m";
+  src: url("../assets//Inter_28pt-Medium.ttf") 
+}
+
+@font-face{
+  font-family: "inter-t";
+  src: url("../assets//Inter_28pt-Thin.ttf") 
+}
+@font-face{
+  font-family: "inter-r";
+  src: url("../assets//Inter_28pt-Regular.ttf") 
+}
+@font-face{
+  font-family: "inter-r";
+  src: url("../assets/Inter_18pt-Regular.ttf") 
+}
+@font-face{
+  font-family: "inter-italic";
+  src: url("../assets//Inter_24pt-Italic.ttf") 
+}
+@font-face{
+  font-family: "playfair-b";
+  src: url("../assets//PlayfairDisplay-Bold.ttf") 
+}
+@font-face{
+  font-family: "playfair-m";
+  src: url("../assets//PlayfairDisplay-Medium.ttf") 
+}
+
