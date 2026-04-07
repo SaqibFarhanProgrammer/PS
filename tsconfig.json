@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/sections/Navbar.jsx"  ],
+, "src/sections/Navbar.jsx", "src/sections/About.jsx"  ],
   "exclude": ["node_modules"]
 }
