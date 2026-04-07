@@ -14,9 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={` h-full antialiased`} cz-shortcut-listen="true">
-      <body className="min-h-full flex flex-col">
-          <Navbar/>
-        {children}</body>
+      <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
