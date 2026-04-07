@@ -195,7 +195,7 @@ const Navbar = () => {
                   onClick={() => handleLinkClick(link.name)}
                   className="group flex items-baseline gap-4 py-4 border-b border-white/10 hover:border-white/30 transition-colors duration-300"
                 >
-                  <span className="text-white/30 text-sm font-mono">
+                  <span className="text-white/30 text-sm font-['inter-b']">
                     {link.number}
                   </span>
                   <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight hover:text-white/80 transition-colors duration-300 transform group-hover:translate-x-4 transition-transform">
