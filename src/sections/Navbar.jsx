@@ -109,7 +109,7 @@ const Navbar = () => {
         <div className="w-full px-6 lg:px-5 xl:px-14">
           <div className="flex items-center justify-between h-20 lg:h-24">
             {/* Logo */}
-            <Link href="/" className="relative z-50 w-22 h-22 lg:w-44 lg:h-44">
+            <Link href="/" className="relative z-50 w-22 h-22 lg:w-44 lg:h-44 max-[420px]:hidden">
               <img
                 src={logo.src}
                 alt="Logo"
