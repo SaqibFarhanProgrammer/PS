@@ -97,11 +97,11 @@ const Navbar = () => {
   );
 
   const navLinks = [
-    { name: "Home", href: "#home", number: "01" },
-    { name: "Work", href: "#work", number: "02" },
-    { name: "About", href: "#about", number: "03" },
-    { name: "Services", href: "#services", number: "04" },
-    { name: "Contact", href: "#contact", number: "05" },
+    { name: "Home", href: "/", number: "01" },
+    { name: "Work", href: "/work", number: "02" },
+    { name: "About", href: "/about", number: "03" },
+    { name: "Services", href: "/services", number: "04" },
+    { name: "Contact", href: "/contact", number: "05" },
   ];
 
   const handleLinkClick = (linkName) => {
@@ -188,7 +188,7 @@ const Navbar = () => {
                 ref={(el) => (mobileLinksRef.current[index] = el)}
                 className="overflow-hidden"
               >
-                <a
+                <Link
                   href={link.href}
                   onClick={() => handleLinkClick(link.name)}
                   className="group flex items-baseline gap-3 py-3 border-b border-white/10"
@@ -199,7 +199,7 @@ const Navbar = () => {
                   <span className="text-4xl sm:text-6xl font-['inter-m'] text-white tracking-tight active:text-white/60 transition-colors">
                     {link.name}
                   </span>
-                </a>
+                </Link>
               </div>
             ))}
           </div>

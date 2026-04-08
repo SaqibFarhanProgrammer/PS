@@ -37,7 +37,7 @@ function About() {
   return (
     <section ref={containerRef} className="w-full py-20 lg:py-32 px-6 lg:px-12 xl:px-24 bg-[#E9E9E9]">
       {/* Image */}
-      <div ref={imageRef} className="w-full aspect-[16/9] lg:aspect-[21/9] h-200  brightness-110 relative overflow-hidden mb-12 lg:mb-16">
+      <div ref={imageRef} className="w-full aspect-[16/9] h-180 lg:aspect-[21/9]  brightness-110 relative overflow-hidden mb-12 lg:mb-16">
         <Image
           src={saqib}
           alt="Saqib Farhan"
@@ -55,6 +55,20 @@ function About() {
         
         <p className="font-[playfair-b] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-[1.1] text-[#1E2939]">
           I'm a fullstack developer based in Karachi, crafting digital experiences with modern web technologies. Focused on clean code, thoughtful design, and building products that matter.
+        </p>
+
+        <br/>
+        <br/>
+
+        <p className="text-[#1E2939] text-2xl font-[inter-r] leading-relaxed">
+          I'm a Full-Stack Developer who enjoys building practical and user-friendly web applications.
+
+          I work with JavaScript across both frontend and backend, using tools like React, Next.js, Node.js, and databases to build complete web apps.
+
+          I like understanding how things work end to end, from UI to APIs and data handling.
+          Currently, I'm improving my skills in TypeScript, Next.js, and backend development by building projects and solving real problems.
+
+          I enjoy challenges because they help me learn faster and become better at what I do.
         </p>
       </div>
     </section>
