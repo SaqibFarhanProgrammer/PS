@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/sections/Navbar";
+import Footer from "@/sections/Footer";
+import SmoothScroll from "@/components/smooth-scroll";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={` h-full antialiased`} cz-shortcut-listen="true">
       <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
+        <SmoothScroll>
+
         <Navbar />
         {children}
+        <Footer/>
+        </SmoothScroll>
       </body>
     </html>
   );
