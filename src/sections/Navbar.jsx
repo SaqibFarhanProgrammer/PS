@@ -117,14 +117,8 @@ const Navbar = () => {
       >
         <div className="w-full px-6 lg:px-5 xl:px-14">
           <div className="flex items-center justify-between h-16 lg:h-24">
-            <Link href="/" className="relative z-50 w-28 lg:w-44">
-              <img
-                src={logo.src}
-                alt="Logo"
-                className={`w-full h-auto object-contain transition-all duration-300 ${
-                  isOpen ? "brightness-100 invert" : "brightness-0"
-                }`}
-              />
+            <Link href="/" className="relative z-50 w-28 lg:w-44 text-black">
+              Portfolio
             </Link>
 
             {/* Desktop Navigation */}
@@ -199,10 +193,10 @@ const Navbar = () => {
                   onClick={() => handleLinkClick(link.name)}
                   className="group flex items-baseline gap-3 py-3 border-b border-white/10"
                 >
-                  <span className="text-white/30 text-xs sm:text-sm font-mono">
+                  <span className="text-white/30 text-xs sm:text-sm font-['playfair-m']">
                     {link.number}
                   </span>
-                  <span className="text-4xl sm:text-6xl font-bold text-white tracking-tight active:text-white/60 transition-colors">
+                  <span className="text-4xl sm:text-6xl font-['inter-m'] text-white tracking-tight active:text-white/60 transition-colors">
                     {link.name}
                   </span>
                 </a>
@@ -213,20 +207,6 @@ const Navbar = () => {
           {/* Footer Section */}
           <div className="mobile-footer mt-10 pt-8 border-t border-white/10">
             <div className="flex flex-col gap-8">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden ring-1 ring-white/20">
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="text-white text-sm font-medium">John Doe</p>
-                  <p className="text-white/50 text-xs">Creative Director</p>
-                </div>
-              </div>
-
               <button className="w-full py-4 bg-white text-black rounded-full text-base font-bold flex items-center justify-center gap-2">
                 Get in Touch
                 <ArrowUpRight className="w-5 h-5" />

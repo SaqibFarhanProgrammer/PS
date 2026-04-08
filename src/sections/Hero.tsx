@@ -4,11 +4,13 @@ function Hero() {
     <div className="min-h-screen lg:h-screen w-full bg-[#E9E9E9] flex flex-col">
       
       {/* TOP SECTION: Mobile pe column, Desktop pe row */}
-      <div className="top w-full min-h-[60vh] flex flex-col lg:flex-row justify-between items-start lg:items-center">
+      <div className="top w-full min-h-[60vh]  flex flex-col lg:flex-row justify-between items-start lg:items-center">
         
         {/* Left Side: Name */}
-        <div className="left w-full lg:w-[60vw] h-auto lg:h-full flex justify-start items-end p-6 lg:p-10">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl uppercase font-[inter-m] text-gray-800 leading-none">
+        <div className="left w-full lg:w-[60vw] h-auto  lg:h-full flex justify-start items-end p-6 lg:p-10">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl 
+          max-[420px]:pt-40
+          uppercase font-[inter-m] text-gray-800 leading-none">
             Saqib <br className="lg:hidden" /> Farhan
           </h1>
         </div>
