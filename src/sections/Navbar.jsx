@@ -113,20 +113,16 @@ const Navbar = () => {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 `}
       >
         <div className="w-full px-6 lg:px-5 xl:px-14">
           <div className="flex items-center justify-between h-16 lg:h-24">
-            {/* Logo */}
-            <Link href="/" className="relative z-50 w-22 h-22 lg:w-44 lg:h-44 max-[420px]:hidden">
             <Link href="/" className="relative z-50 w-28 lg:w-44">
               <img
                 src={logo.src}
                 alt="Logo"
                 className={`w-full h-auto object-contain transition-all duration-300 ${
-                    isOpen ? "brightness-100 invert" : "brightness-0"
+                  isOpen ? "brightness-100 invert" : "brightness-0"
                 }`}
               />
             </Link>
@@ -174,9 +170,7 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`lg:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
-                isOpen
-                  ? "bg-white text-black"
-                  : "bg-black text-white"
+                isOpen ? "bg-white text-black" : "bg-black text-white"
               }`}
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -239,11 +233,17 @@ const Navbar = () => {
               </button>
 
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-white/40 text-xs uppercase tracking-widest">
-                {["Instagram", "Twitter", "LinkedIn", "Dribbble"].map((social) => (
-                  <a key={social} href="#" className="hover:text-white transition-colors">
-                    {social}
-                  </a>
-                ))}
+                {["Instagram", "Twitter", "LinkedIn", "Dribbble"].map(
+                  (social) => (
+                    <a
+                      key={social}
+                      href="#"
+                      className="hover:text-white transition-colors"
+                    >
+                      {social}
+                    </a>
+                  ),
+                )}
               </div>
             </div>
           </div>
