@@ -1,39 +1,28 @@
-'use client'
+"use client";
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ArrowUpRight } from "lucide-react";
+import splitly from "@/assets/splitly.png";
+import coraide from "@/assets/cora_ide.png";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP);
 
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    category: "Web Development",
+    title: "Splitly",
+    category: "Web App",
     year: "2024",
-    image: "/project1.jpg",
+    image: splitly,
   },
   {
     id: 2,
-    title: "Finance Dashboard",
-    category: "UI/UX Design",
+    title: "Cora IDE",
+    category: "Developer Tool",
     year: "2024",
-    image: "/project2.jpg",
-  },
-  {
-    id: 3,
-    title: "Social Media App",
-    category: "Mobile Development",
-    year: "2023",
-    image: "/project3.jpg",
-  },
-  {
-    id: 4,
-    title: "Brand Identity",
-    category: "Branding",
-    year: "2023",
-    image: "/project4.jpg",
+    image: coraide,
   },
 ];
 
@@ -42,36 +31,45 @@ function Projects() {
   const headerRef = useRef(null);
   const projectRefs = useRef([]);
 
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-      },
-    });
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        },
+      });
 
-    tl.fromTo(
-      headerRef.current,
-      { y: 60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
-    ).fromTo(
-      projectRefs.current,
-      { y: 80, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-  }, { scope: containerRef });
+      tl.fromTo(
+        headerRef.current,
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+      ).fromTo(
+        projectRefs.current,
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "-=0.4",
+      );
+    },
+    { scope: containerRef },
+  );
 
   return (
-    <section ref={containerRef} className="w-full py-20 lg:py-32 px-6 lg:px-12 xl:px-24">
+    <section
+      ref={containerRef}
+      className="w-full py-20 lg:py-32 px-6 lg:px-12 xl:px-24"
+    >
       {/* Header */}
-      <div ref={headerRef} className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-24 gap-6">
+      <div
+        ref={headerRef}
+        className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-24 gap-6"
+      >
         <div>
           <span className="font-[inter-m] text-xs tracking-[0.3em] uppercase opacity-60 mb-4 block">
             Selected Work
@@ -81,7 +79,8 @@ function Projects() {
           </h2>
         </div>
         <p className="font-[inter-r] text-sm lg:text-base max-w-md opacity-70 leading-relaxed">
-          A curated selection of projects that showcase my expertise in design and development.
+          A curated selection of projects that showcase my expertise in design
+          and development.
         </p>
       </div>
 
@@ -97,14 +96,24 @@ function Projects() {
             <div className="relative aspect-[4/3] overflow-hidden mb-6">
               <div className="absolute inset-0 bg-neutral-200">
                 {/* Placeholder - replace with actual Image component */}
-                <div className="w-full h-full flex items-center justify-center font-[inter-m] text-sm opacity-40">
-                  {project.image}
+                <div className="relative aspect-[4/3] overflow-hidden mb-6 bg-zinc-300">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    className="object-cover  mt-20 mx-20"
+                  />
+
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
+
+                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
                 </div>
               </div>
-              
+
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
-              
+
               {/* View Project Button */}
               <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                 <ArrowUpRight className="w-5 h-5" />
