@@ -25,6 +25,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent scrolling when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
+
   useGSAP(
     () => {
       if (isOpen) {
@@ -39,7 +48,7 @@ const Navbar = () => {
           .fromTo(
             mobileLinksRef.current,
             {
-              y: 100,
+              y: 80,
               opacity: 0,
               rotateX: -45,
             },
@@ -77,7 +86,7 @@ const Navbar = () => {
 
         gsap.to(mobileLinksRef.current, {
           duration: 0.3,
-          y: -50,
+          y: -30,
           opacity: 0,
           stagger: 0.05,
           ease: "power2.in",
@@ -104,20 +113,25 @@ const Navbar = () => {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 `}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+        }`}
       >
         <div className="w-full px-6 lg:px-5 xl:px-14">
-          <div className="flex items-center justify-between h-20 lg:h-24">
+          <div className="flex items-center justify-between h-16 lg:h-24">
             {/* Logo */}
             <Link href="/" className="relative z-50 w-22 h-22 lg:w-44 lg:h-44 max-[420px]:hidden">
+            <Link href="/" className="relative z-50 w-28 lg:w-44">
               <img
                 src={logo.src}
                 alt="Logo"
-                className="w-full h-full object-contain object-contain brightness-0"
+                className={`w-full h-auto object-contain transition-all duration-300 ${
+                    isOpen ? "brightness-100 invert" : "brightness-0"
+                }`}
               />
             </Link>
 
-            {/* Desktop Navigation + Button */}
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-10">
               <div className="flex items-center gap-8">
                 {navLinks.map((link) => (
@@ -159,17 +173,13 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`lg:hidden relative z-50 w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 ${
+              className={`lg:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
                 isOpen
                   ? "bg-white text-black"
-                  : "bg-black text-white hover:bg-gray-800"
+                  : "bg-black text-white"
               }`}
             >
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -178,27 +188,27 @@ const Navbar = () => {
       {/* Full Screen Mobile Menu */}
       <div
         ref={menuOverlayRef}
-        className="fixed inset-0 z-40 bg-black opacity-0 invisible lg:hidden"
+        className="fixed inset-0 z-40 bg-black opacity-0 invisible lg:hidden overflow-y-auto"
         style={{ perspective: "1000px" }}
       >
-        <div className="h-full w-full flex flex-col justify-center px-8 sm:px-12">
-          <div className="space-y-2">
+        <div className="min-h-screen w-full flex flex-col justify-between px-6 py-24 sm:px-12">
+          {/* Navigation Links */}
+          <div className="space-y-1 sm:space-y-2 mt-4">
             {navLinks.map((link, index) => (
               <div
                 key={link.name}
                 ref={(el) => (mobileLinksRef.current[index] = el)}
                 className="overflow-hidden"
-                style={{ transformStyle: "preserve-3d" }}
               >
                 <a
                   href={link.href}
                   onClick={() => handleLinkClick(link.name)}
-                  className="group flex items-baseline gap-4 py-4 border-b border-white/10 hover:border-white/30 transition-colors duration-300"
+                  className="group flex items-baseline gap-3 py-3 border-b border-white/10"
                 >
-                  <span className="text-white/30 text-sm font-mono">
+                  <span className="text-white/30 text-xs sm:text-sm font-mono">
                     {link.number}
                   </span>
-                  <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight hover:text-white/80 transition-colors duration-300 transform group-hover:translate-x-4 transition-transform">
+                  <span className="text-4xl sm:text-6xl font-bold text-white tracking-tight active:text-white/60 transition-colors">
                     {link.name}
                   </span>
                 </a>
@@ -206,10 +216,11 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="mobile-footer mt-12 pt-8 border-t border-white/10">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+          {/* Footer Section */}
+          <div className="mobile-footer mt-10 pt-8 border-t border-white/10">
+            <div className="flex flex-col gap-8">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-white/20">
+                <div className="w-12 h-12 rounded-full overflow-hidden ring-1 ring-white/20">
                   <img
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
                     alt="Profile"
@@ -217,36 +228,30 @@ const Navbar = () => {
                   />
                 </div>
                 <div>
-                  <p className="text-white font-medium">John Doe</p>
-                  <p className="text-white/50 text-sm">Creative Director</p>
+                  <p className="text-white text-sm font-medium">John Doe</p>
+                  <p className="text-white/50 text-xs">Creative Director</p>
                 </div>
               </div>
 
-              <button className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full text-lg font-bold tracking-wide hover:bg-white/90 transition-colors duration-300 flex items-center justify-center gap-2">
+              <button className="w-full py-4 bg-white text-black rounded-full text-base font-bold flex items-center justify-center gap-2">
                 Get in Touch
                 <ArrowUpRight className="w-5 h-5" />
               </button>
-            </div>
 
-            <div className="mt-8 flex gap-6 text-white/40 text-sm">
-              <a href="#" className="hover:text-white transition-colors">
-                Instagram
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Twitter
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                LinkedIn
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Dribbble
-              </a>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-white/40 text-xs uppercase tracking-widest">
+                {["Instagram", "Twitter", "LinkedIn", "Dribbble"].map((social) => (
+                  <a key={social} href="#" className="hover:text-white transition-colors">
+                    {social}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
+        {/* Background Decorative Blobs */}
+        <div className="absolute top-1/4 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 -left-20 w-64 h-64 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
       </div>
     </>
   );
