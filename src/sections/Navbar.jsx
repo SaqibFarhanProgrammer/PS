@@ -132,7 +132,7 @@ const Navbar = () => {
                     className="relative group py-2"
                   >
                     <span
-                      className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
+                      className={`text-sm font-medium mix-blend-difference tracking-wide transition-colors duration-300 ${
                         activeLink === link.name
                           ? "text-black"
                           : "text-gray-600 group-hover:text-black"
