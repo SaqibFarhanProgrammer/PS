@@ -141,7 +141,7 @@ function Contact() {
             <h3 className="font-[inter-b] text-lg uppercase tracking-wide text-[#1E2939] mb-6">
               Socials
             </h3>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap wrap">
               {["GitHub", "LinkedIn", "Twitter", "Dribbble"].map((social) => (
                 <a
                   key={social}
